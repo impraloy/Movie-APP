@@ -28,15 +28,15 @@ class App extends React.Component {
   }
 
   getMovie = async (e) => {
-    
+
     const movie_name = e.target.elements.movie_name.value;
     e.preventDefault();
-    
-    const api_call = await fetch( `http://www.omdbapi.com/?t=${movie_name}&apikey=${api_key}`);
+
+    const api_call = await fetch(`https://www.omdbapi.com/?t=${movie_name}&apikey=${api_key}`);
     const response = await api_call.json();
 
     console.log(response);
-    if(movie_name){
+    if (movie_name) {
       this.setState({
         title: response.Title,
         year: response.Year,
@@ -61,8 +61,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header />
-        <InputForm getMovie={this.getMovie}/>
-        <MovieDetails {...this.state}/>
+        <InputForm getMovie={this.getMovie} />
+        <MovieDetails {...this.state} />
       </div>
     )
   }
